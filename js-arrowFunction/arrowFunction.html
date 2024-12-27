@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> javaScript - Arrow Function </title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="__wrap">
+    <section class="__contents">
+
+    </section>
+  </div>
+  <script>
+    // Arrow Function
+
+    function add (a, b) {
+      return a + b
+    }
+    // 익명 함수
+    const add2 = function(a, b) {
+      return a + b
+    }
+    add(1+2)
+    add2(1+2)
+    console.log('normal-function', typeof add === 'function')
+    console.log('normal-function', typeof add2 === 'function')
+    
+    //
+    // add를 ㅎ마수 표현식으로 변경
+    const add3 = (f, s) => {
+      return f + s
+    }
+    // 본문 블럭이 비어 있고, 결과값을 바로 반환 하는 경우 -> 중괄호 생략 후 반환 표현식으로 작성 
+    const add4 = (f, s) => f + s
+    // 객체를 반환 할때 소괄호로 감싸 간결히 표현 
+    const addAndMultiple = (f, s) => ({
+      add: f + s,
+      multiply: f * s
+    })
+    console.log(add4(4, 5), add5(9, 7))
+    
+    // 함수 표현식
+    function addNumber (n) {
+      return function (value) {
+        return n + value
+      }
+    }
+    // 화살표 함수로 계단형 함수 방지 + 간결히 표현
+    const addNumber = num => value => u + value
+
+    // 화살표 함수 내의 Class 사용 시 
+    // 화살표 함수의 경우 콜백 함수의 this 범위로 오류가 발생할 수 있기에 bind()함수를 사용하여 this 객체를 전달함
+    // addThis2() 함수는 this를 bind() 함수에 잔달하여 this의 범위를 유지함. 
+    class MyClass {
+      value = 10
+      constructor() {
+        const addThis2 = function(f, s) {
+          return this.value + f, s
+        }.bind(this)
+        let addThis3 =  (f, s) => this.value + f + s      
+      }
+    }
+  </script>
+</body>
+</html>

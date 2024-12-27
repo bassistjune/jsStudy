@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> javaScript - Class </title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="__wrap">
+    <section class="__contents">
+
+    </section>
+  </div>
+  <script>
+    // ES6 이전의 자바스크립트 클래스 문법
+    // 1.
+    // Constructor 형태 선언 -> 상속이 필요한 함수나 변수를 prototype 객체에 할당해서 사용. 
+    function Shape () {
+      this.name = 'Shape'
+      this.move(x, y)
+    }
+    Shape.create = function (x, y) {
+      { return new Shape(x, y) }
+    }
+    Shape.prototype.area = function () {
+      return 0
+    }
+    Shape.prototype = {
+      move: function (x, y) {
+        this.x = x
+        this.y = y
+      },
+      area: function () {
+        return 0
+      }
+    }
+    let s = new Shape(0, 0)
+    s.area()
+
+    // 자식클래스 생성. 
+    // 자식클래스인 Circle은 내장 함수 call()로 부모의 생성자를 호출하여 초기 값을 상속 받음  - Java에서 사용되는 super()와 동일한 방식
+    // Object에 내장 된 assign() 함수로 부모 클래스 함수를 상속
+    function Circle (x, y, radius) {
+      Shape.call(this, x, y)
+      this.name = 'Circle'
+      this.radius = radius
+    }
+    Object.assign(Circle.prototype, Shape.prototype, {
+      area: function () {
+        return this.radius * this.radius
+      }
+    })
+    let s2 = new Circle(0, 0, 10)
+    s2.area()
+</script>
+</body>
+</html>
