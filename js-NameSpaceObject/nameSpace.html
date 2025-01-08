@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> javaScript - NameSpaceObject </title>
+  <link rel="stylesheet" href="../style/style.css" />
+</head>
+<body>
+  <div class="__wrap">
+    <section class="__contents">
+      <input type="text" class="__item" />
+      <button type="button" class="__itemBtn">test</button>
+    </section>
+  </div>
+  <script>
+    // 전역에 네임스페이스 객체를 생성, 객체로 추가
+    let MyApp = {}
+    MyApp.name = 'June Hee'
+    console.log('MyApp.Name: ', MyApp)
+
+
+    // 네임스페이스 객체에 다른 네임스페이스 객체를 추가하여 네임스페이스를 계층구조로 구성할 수 있다.
+    let MyApp2 = {}
+    MyApp2.person = {
+      name: 'June Hee',
+      age: 38,
+      sex: 'Man'
+    }
+    console.log('MyApp2: ', MyApp2)
+    MyApp2 = {
+      skill: {
+        frameWork: ['Vue.js3', 'Nuxt.js3'],
+        language: ['JavaScript', 'TypeScript']
+      },
+      person : {
+        ...MyApp2.person
+      }
+      
+    }
+    console.log('fixedMyApp2: ', MyApp2)
+    
+  </script>
+</body>
+</html>
