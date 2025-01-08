@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> javaScript - IIFE(즉시 실행 함수) </title>
+  <link rel="stylesheet" href="../style/style.css" />
+</head>
+<body>
+  <div class="__wrap">
+    <section class="__contents">
+      <input type="text" class="__item" />
+      <button type="button" class="__itemBtn">test</button>
+    </section>
+  </div>
+  <script>
+    // 전역 변수
+    let foo
+    // 전체를 즉시 실행 함수로 감 사서 단 한번 호출 되게 처리
+    (function () {
+      const inputItem = document.querySelector('.__item')
+      const btnItem = document.querySelector('.__itemBtn')
+      console.log('test')
+      foo = 'test'
+      inputItem.value = foo
+    }())
+  </script>
+</body>
+</html>
